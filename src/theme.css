@@ -1,0 +1,112 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap');
+
+/* Define Theme Colors */
+:root {
+  --bs-primary: #002b3d; /* Primary Dark Blue */
+  --bs-secondary: #008cba; /* Secondary Teal Blue */
+  --bs-dark: #212529; /* Dark Text */
+  --bs-light: #ffffff; /* Light Background */
+  --bs-background: #f5f5f5; /* Light Gray Background */
+  --bs-font-family-heading: 'Lora', serif;  /* Elegant font for headings */
+  --bs-font-family-body: 'Mulish', sans-serif;  /* Clean font for body text */
+}
+
+/* Apply Base Styles */
+body {
+  font-family: var(--bs-font-family-body);
+  background-color: var(--bs-background);
+  margin: 0;
+  padding: 0;
+  color: var(--bs-dark);
+}
+
+/* Apply Lora font for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--bs-font-family-heading);
+  font-weight: 600;  /* Semi-bold for headings */
+}
+
+/* Apply Mulish font for body text, paragraphs, and general text */
+p, span, div, li {
+  font-family: var(--bs-font-family-body);
+  font-weight: 400;  /* Regular weight for body text */
+}
+
+/* Table Styling */
+th {
+  background-color: var(--bs-primary) !important;
+  color: var(--bs-background) !important;
+  font-weight: 600;  /* Bold headers for table */
+}
+
+td, th {
+  padding: 12px 15px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* General Card Styling (applies to all pages) */
+.card {
+  background-color: var(--bs-primary);
+  color: var(--bs-background);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+}
+
+/* Card Title Styling */
+.card-title {
+  font-family: var(--bs-font-family-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--bs-background);
+}
+
+/* Card Body Styling */
+.card-body {
+  padding: 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--bs-background);
+}
+
+/* Card Text Styling */
+.card-text {
+  font-family: var(--bs-font-family-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--bs-background);
+}
+
+/* Hover Effects for Cards (Global) */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.pagination .page-item  {
+    color: var(--bs-primary);
+    background-color: var(--bs-background);
+    font-weight: 600;
+  }
+  
+  /* Active pagination button styling */
+.pagination .page-item.active .page-link {
+    background-color: var(--bs-primary) !important  ;
+    color: var(--bs-background);
+    font-weight: 600;
+  }
+  
+  /* Hover effect for pagination buttons */
+  .pagination .page-item .page-link:hover {
+    background-color: var(--bs-primary);
+    color: var(--bs-background);
+  }
+  .prev,.next{
+    color: var(--bs-primary);
+    background-color: var(--bs-background);
+    font-weight: 600;
+    border: 1px solid var(--bs-primary);
+}

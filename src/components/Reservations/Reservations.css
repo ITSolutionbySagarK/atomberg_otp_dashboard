@@ -1,0 +1,117 @@
+/* Filter Button Styling */
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    border-radius: 50px; /* Round button */
+  }
+  
+  .btn-primary:hover {
+    background-color: #005f77; /* Darker shade for hover */
+    border-color: #005f77;
+  }
+  
+  /* Right-Side Filter Pane (Overlay) */
+  .filter-pane {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Start off-screen */
+    width: 300px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1040;
+    padding: 20px;
+  }
+  
+  .filter-pane.open {
+    right: 0; /* Slide in when open */
+  }
+  
+  .filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+  
+  .filter-header h5 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  
+  .filter-header .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .filter-content {
+    margin-top: 20px;
+  }
+  
+  .filter-content input,
+  .filter-content select {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .filter-content button {
+    width: 100%;
+    border-radius: 50px; /* Rounded corners for buttons */
+  }
+  
+  .filter-content button:first-of-type {
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  .filter-content button:first-of-type:hover {
+    background-color: #e2e6ea;
+  }
+  
+  .filter-content button:nth-of-type(2) {
+    background-color: var(--bs-primary);
+    color: #fff;
+  }
+  
+  .filter-content button:nth-of-type(2):hover {
+    background-color: #005f77; /* Darker shade for Apply button hover */
+    border-color: #005f77;
+  }
+  
+  /* Responsive Adjustments for Cards */
+  @media (max-width: 576px) {
+    .card-body {
+      font-size: 1.1rem;  /* Increase font size slightly on smaller screens */
+    }
+  }
+  
+  /* Additional Styling for Reservations Table (Only for Specific Page) */
+  .table-responsive {
+    margin-top: 20px;
+  }
+  .loader-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+  
+  .loader {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
