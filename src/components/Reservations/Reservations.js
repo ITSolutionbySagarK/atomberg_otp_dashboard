@@ -12,19 +12,21 @@ const Reservations = () => {
   const [filter, setFilter] = useState({
     reservationNumber: '',
     mobileNumber: '',
-    checkInDate: new Date().toISOString().split('T')[0], // Set today's date by default
+    checkInDate: new Date().toISOString().split('T')[0],
+    hotelCode:'' // Set today's date by default
   });
   const [reservations, setReservations] = useState([]); // State to hold reservation data
   const [totalPages, setTotalPages] = useState(1); // Total pages from API
   const [loading, setLoading] = useState(false); // State to track the loading state
   const [isFilterApplied, setIsFilterApplied] = useState(false); // Track if filters are applied
-
+  const [isFirstLoad,setIsFirstLoad]=useState(true)
   const fetchReservations = () => {
-    const { reservationNumber, mobileNumber, checkInDate } = filter;
+    const { reservationNumber, mobileNumber, checkInDate,hotelCode } = filter;
     const params = new URLSearchParams({
       reservation_number: reservationNumber,
       guest_mobile_number: mobileNumber,
       check_in_date_time: checkInDate,
+      hotel_code:hotelCode,
       page: currentPage,
       page_size: reservationsPerPage,
     });
@@ -51,8 +53,9 @@ const Reservations = () => {
 
   // Fetch reservations when filter, currentPage, or isFilterApplied changes
   useEffect(() => {
-    if (isFilterApplied) {
+    if (isFilterApplied || isFirstLoad) {
       fetchReservations();
+      setIsFirstLoad(false)
     }
   }, [ currentPage, isFilterApplied]); // Run when filter, currentPage, or isFilterApplied changes
 
@@ -112,6 +115,15 @@ const Reservations = () => {
           <button className="btn-close" onClick={toggleFilterPane}>X</button>
         </div>
         <div className="filter-content">
+        <p>Hotel Code</p>
+          <input
+            type="text"
+            name="hotelCode"
+            value={filter.hotelCode}
+            onChange={handleFilterChange}
+            placeholder="Enter Hotel Code"
+            className="form-control"
+          />
           <p>Reservation Number</p>
           <input
             type="text"
@@ -159,6 +171,7 @@ const Reservations = () => {
         <table className="table table-bordered table-striped">
           <thead>
             <tr>
+              <th>Hotel Code</th>
               <th>Reservation Number</th>
               <th>Guest Name</th>
               <th>Mobile Number</th>
@@ -172,6 +185,7 @@ const Reservations = () => {
           <tbody>
             {reservations.map((res, index) => (
               <tr key={index}>
+                 <td>{res.hotel_code}</td>
                 <td>{res.reservation_number}</td>
                 <td>{res.guest_name}</td>
                 <td>{res.guest_mobile_number}</td>
@@ -199,6 +213,7 @@ const Reservations = () => {
                 <div className="card-body">
                   <h5 className="card-title">Reservation: {res.reservation_number}</h5>
                   <p className="card-text">
+                    <strong>Hotel Code:</strong> {res.hotel_code} <br />
                     <strong>Guest Name:</strong> {res.guest_name} <br />
                     <strong>Mobile Number:</strong> {res.guest_mobile_number} <br />
                     <strong>Room Number:</strong> {res.room_name} <br />
